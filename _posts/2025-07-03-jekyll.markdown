@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "Mon aventure avec les machines : mettre en place un blog avec Jekyll et GitHub"
+date:   2025-07-03 15:16:00 +0200
+categories:
+---
+
+Récemment, j’ai eu envie de créer un blog personnel pour partager mes idées, mes réflexions, les projets que je mène sur ma machine, et plus largement, tout ce qui m’inspire ou m’interpelle. 
+
+### À la découverte de Jekyll (et de Ruby)
+
+Très vite, je me suis orienté vers [Jekyll](https://jekyllrb.com/), un générateur de site statique qui peut fonctionner en synergie avec GitHub Pages. Sur le papier, cela semblait simple. Mais en pratique… ça ne s’est pas exactement passé comme prévu.
+
+Il faut dire que je n’avais aucune connaissance en Ruby avant de me lancer. Or, Jekyll repose entièrement sur cet environnement. Son installation se fait via gem, le gestionnaire de paquets de Ruby. Pour ceux qui découvrent : un gem est un paquet contenant du code Ruby prêt à être utilisé — un peu comme les modules Python ou les paquets npm en JavaScript.
+
+### Les premières galères d’installation
+
+Je me suis donc appuyé sur la documentation officielle pour installer Jekyll. Malheureusement, les gems se sont installés au niveau du système, ce qui a généré de nombreux conflits et erreurs, notamment liés aux permissions.
+
+C’est en cherchant à comprendre ces erreurs que j’ai découvert qu’il est préférable d’isoler son environnement Ruby au niveau de l’utilisateur. J’ai donc tout désinstallé et repris à zéro. J’ai installé `rbenv` et `ruby-build` à partir des SlackBuilds (je travaille sur Slackware), ce qui m’a permis de reconstruire un environnement Ruby propre et localisé à mon utilisateur.
+
+Une fois cela en place, j’ai enfin pu exécuter correctement les commandes Jekyll.
+
+### Deux approches pour configurer Jekyll
+
+C’est à ce moment-là que j’ai découvert une subtilité dans la manière de configurer un projet Jekyll via le fichier Gemfile : il existe deux approches principales.
+
+1. La première consiste à utiliser la dernière version disponible de Jekyll, ainsi que les gems de son choix, en gérant soi-même les dépendances. 
+
+2. La seconde, plus simple à première vue, consiste à utiliser le gem github-pages, qui regroupe une version spécifique de Jekyll et un ensemble de gems préconfigurés, garantissant une compatibilité totale avec le moteur de rendu de GitHub Pages.
+
+J’ai d’abord opté pour cette seconde méthode, en me disant qu’elle me ferait gagner du temps. En réalité, elle m’a surtout exposé à de nouveaux messages d’erreur dus à des conflits de dépendances au moment du build.
+
+### GitHub Actions à la rescousse (et retour à la configuration manuelle)
+
+Plutôt que de me battre avec ces contraintes imposées par la gem github-pages, j’ai décidé de reprendre le contrôle sur l’environnement d’exécution, et de revenir à la première approche : celle où je choisis les versions des gems moi-même, et où j’utilise la dernière version stable de Jekyll.
+
+Pour cela, j’ai mis en place un workflow CI/CD via GitHub Actions. Ce système me permet, à chaque push sur mon dépôt, de créer un environnement Ruby propre, d’installer les gems que j’ai définis dans mon Gemfile, de générer le site, puis de le déployer automatiquement sur GitHub Pages.
+
+Cela m’a permis de contourner les limitations de GitHub Pages en local, tout en gardant la main sur les versions des outils utilisés.

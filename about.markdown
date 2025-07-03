@@ -4,15 +4,12 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Hello!
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+Je suis Nicolas Gregson.
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+Il y a quelque temps, je découvrais Linux — et plus particulièrement Slackware — une distribution minimale et exigeante qui m’a tout de suite passionné. Elle incarne une autre manière de faire : plus directe, plus libre, loin des dépendances technologiques qu’on finit par ne plus questionner.
 
+Cette approche fait écho à mon propre parcours, fait de curiosité, d’opportunités, et de passions. Ce que je cherche, aujourd’hui comme hier, c’est la recherche de la simplicité dans les outils comme dans les idées. La ligne de commande en est un bon exemple : dépouillée, directe, sans interface inutile entre soi et ce qu’on fait.
 
-[jekyll-organization]: https://github.com/jekyll
+Ce blog est né de cette envie : un espace libre pour articuler ces explorations, techniques ou autres, sans modèle à suivre.
